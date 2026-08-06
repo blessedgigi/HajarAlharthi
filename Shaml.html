@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Shaml+ | Hajar Alharthi</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: "#C9A46A",
+            cream: "#F5F1EA",
+            dark: "#000000",
+            card: "#0A0A0A"
+          },
+          fontFamily: {
+            serif: ["Cormorant Garamond", "serif"]
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #000000;
+      color: #F5F1EA;
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .section-title {
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .card {
+      background: #0A0A0A;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #C9A46A;
+    }
+
+    .nav-link,
+    .button {
+      transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #C9A46A;
+    }
+
+    .button:hover {
+      background: #C9A46A;
+      color: #000000;
+      transform: translateY(-2px);
+    }
+
+    .tag {
+      border: 1px solid rgba(201, 164, 106, 0.7);
+      border-radius: 999px;
+      padding: 8px 16px;
+      white-space: nowrap;
+    }
+
+    .tool-tag {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      padding: 8px 16px;
+      white-space: nowrap;
+    }
+
+    .pdf-frame {
+      width: 100%;
+      height: 900px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      background: #111111;
+    }
+
+    @media (max-width: 768px) {
+      .pdf-frame {
+        height: 620px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+      <a
+        href="index.html"
+        class="text-xl font-bold"
+      >
+        Hajar<span class="text-gold">Alharthi</span>.
+      </a>
+
+      <div class="flex items-center gap-6 text-base text-cream/80">
+        <a
+          href="index.html#projects"
+          class="nav-link"
+        >
+          Projects
+        </a>
+
+        <a
+          href="index.html#contact"
+          class="nav-link"
+        >
+          Contact
+        </a>
+      </div>
+
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="pt-36 pb-20 px-6">
+      <div class="max-w-6xl mx-auto">
+
+        <p class="text-gold text-lg italic mb-4">
+          Human-Computer Interaction | Graduation Project
+        </p>
+
+        <h1 class="text-5xl md:text-7xl font-bold mb-6">
+          Shaml<span class="text-gold">+</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-cream/80 max-w-3xl leading-relaxed">
+          A user-centered digital platform designed to improve the external
+          child visitation experience for parents, children, and administrators.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="px-6 pb-10">
+      <div class="max-w-6xl mx-auto">
+
+        <article class="card p-8 md:p-10">
+
+          <h2 class="section-title text-2xl md:text-3xl text-gold mb-5">
+            Project Overview
+          </h2>
+
+          <p class="text-lg text-cream/80 leading-relaxed max-w-4xl">
+            Shaml+ digitizes the external visitation journey through connected
+            experiences for parents, children, and administrative staff.
+          </p>
+
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Problem and Solution -->
+<section class="px-6 py-10">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+
+        <article class="card p-8">
+
+          <p class="text-gold italic text-lg mb-3">
+            The Problem
+          </p>
+
+          <h2 class="text-2xl md:text-3xl font-bold mb-6">
+            A fragmented service journey
+          </h2>
+
+          <ul class="space-y-3 text-lg text-cream/80">
+            <li>• Manual and disconnected procedures.</li>
+            <li>• Limited visibility of visit requests.</li>
+            <li>• Unclear communication between users.</li>
+            <li>• No dedicated child-friendly experience.</li>
+          </ul>
+
+        </article>
+
+        <article class="card p-8">
+
+          <p class="text-gold italic text-lg mb-3">
+            The Solution
+          </p>
+
+          <h2 class="text-2xl md:text-3xl font-bold mb-6">
+            One connected digital platform
+          </h2>
+
+          <ul class="space-y-3 text-lg text-cream/80">
+            <li>• Visit requests, tracking, and reminders.</li>
+            <li>• A supportive child-focused experience.</li>
+            <li>• Safe communication and support services.</li>
+            <li>• An admin dashboard for case management.</li>
+          </ul>
+
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Role and Tools -->
+    <section class="px-6 py-10">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+
+        <article class="card p-8 md:p-10">
+
+          <h2 class="section-title text-2xl md:text-3xl text-gold mb-6">
+            My Role
+          </h2>
+
+          <div class="flex flex-wrap gap-3">
+            <span class="tag">UX Research</span>
+            <span class="tag">UX Design</span>
+            <span class="tag">UI Design</span>
+            <span class="tag">Wireframing</span>
+            <span class="tag">Prototyping</span>
+            <span class="tag">Usability Testing</span>
+          </div>
+
+        </article>
+
+        <article class="card p-8 md:p-10">
+
+          <h2 class="section-title text-2xl md:text-3xl text-gold mb-6">
+            Tools Used
+          </h2>
+
+          <div class="flex flex-wrap gap-3">
+            <span class="tool-tag">Figma</span>
+            <span class="tool-tag">FigJam</span>
+            <span class="tool-tag">Google Forms</span>
+          </div>
+
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Outcome and Learning -->
+    <section class="px-6 py-10">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+
+        <article class="card p-8 md:p-10">
+
+          <h2 class="section-title text-2xl md:text-3xl text-gold mb-6">
+            Project Outcome
+          </h2>
+
+          <p class="text-lg text-cream/80 leading-relaxed">
+            Usability testing showed that the main journeys were understandable
+            for parents, children, and administrators, while also revealing
+            opportunities to improve wording, guidance, and status clarity.
+          </p>
+
+        </article>
+
+        <article class="card p-8 md:p-10">
+
+          <h2 class="section-title text-2xl md:text-3xl text-gold mb-6">
+            What I Learned
+          </h2>
+
+          <ul class="space-y-3 text-lg text-cream/80">
+            <li>• Designing for multiple user groups.</li>
+            <li>• Translating research into design decisions.</li>
+            <li>• Conducting structured usability testing.</li>
+            <li>• Improving sensitive service experiences.</li>
+          </ul>
+
+        </article>
+
+      </div>
+    </section>
+
+    <!-- PDF -->
+    <section class="px-6 py-24 border-t border-white/10">
+      <div class="max-w-6xl mx-auto">
+
+        <div class="text-center mb-10">
+
+          <p class="text-gold italic text-xl mb-3">
+            Full Case Study
+          </p>
+
+          <h2 class="text-3xl md:text-4xl font-bold mb-5">
+            Explore the Complete Project
+          </h2>
+
+          <p class="text-lg text-cream/70 max-w-2xl mx-auto">
+            Review the full graduation project directly below or open the PDF
+            in a new tab.
+          </p>
+</div>
+
+        <iframe
+          src="GraduationProject.pdf"
+          title="Shaml Plus Graduation Project PDF"
+          class="pdf-frame"
+        ></iframe>
+
+        <div class="mt-10 text-center">
+
+          <a
+            href="GraduationProject.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button inline-flex items-center justify-center border border-gold text-gold px-8 py-4 rounded-full text-lg font-semibold"
+          >
+            Open Full Project PDF →
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-7 px-6 text-center text-cream/50 text-sm">
+    © 2026 Hajar Alharthi. All rights reserved.
+  </footer>
+
+</body>
+
+</html>
