@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hajar Alharthi — Human-Computer Interaction student portfolio." />
+
+  <title>Hajar Alharthi — HCI Portfolio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: "#0B1220",
+            card: "#162032",
+            cardHover: "#1D2A40",
+            blue: "#4F8EF7",
+            blueHover: "#79AFFF",
+            text: "#F8FAFC",
+            muted: "#A8B3C7",
+            lightBg: "#F5F8FC",
+            lightCard: "#FFFFFF",
+            lightText: "#0F172A",
+            lightMuted: "#526071"
+          },
+          fontFamily: {
+            serif: ["Cormorant Garamond", "serif"],
+            sans: ["Cormorant Garamond", "serif"],
+            display: ["Cormorant Garamond", "serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg: #0B1220;
+      --card: #162032;
+      --card-hover: #1D2A40;
+      --text: #F8FAFC;
+      --muted: #A8B3C7;
+      --border: rgba(255,255,255,0.08);
+      --soft-border: rgba(255,255,255,0.14);
+      --header-bg: rgba(11,18,32,0.9);
+      --shadow: 0 24px 50px rgba(24,78,150,0.2);
+    }
+
+    body.light {
+      --bg: #F5F8FC;
+      --card: #FFFFFF;
+      --card-hover: #EEF4FC;
+      --text: #0F172A;
+      --muted: #526071;
+      --border: rgba(15,23,42,0.09);
+      --soft-border: rgba(15,23,42,0.16);
+      --header-bg: rgba(245,248,252,0.92);
+      --shadow: 0 20px 45px rgba(30,64,175,0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 700;
+    }
+
+    p, li, span, a, button {
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    p {
+      font-weight: 500;
+    }
+
+    a, button {
+      font-weight: 600;
+    }
+
+    ::selection {
+      background: #4F8EF7;
+      color: #ffffff;
+    }
+
+    section {
+      scroll-margin-top: 92px;
+    }
+
+    .section-title {
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .site-header {
+      background: var(--header-bg);
+      border-color: var(--border);
+    }
+
+    .nav-link,
+    .contact-link,
+    .primary-button,
+    .project-card,
+    .info-card,
+    .project-arrow,
+    .icon-button,
+    .language-button,
+    .resume-button {
+      transition: all 0.3s ease;
+    }
+
+    .nav-link {
+      color: var(--muted);
+    }
+
+    .nav-link:hover,
+    .contact-link:hover {
+      color: #79AFFF;
+    }
+
+    .icon-button,
+    .language-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      border: 1px solid var(--soft-border);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 8px 13px;
+      cursor: pointer;
+    }
+
+    .icon-button {
+      width: 42px;
+      padding: 0;
+      font-size: 18px;
+    }
+
+    .icon-button:hover,
+    .language-button:hover {
+      border-color: #4F8EF7;
+      color: #79AFFF;
+      transform: translateY(-2px);
+    }
+
+    .primary-button,
+    .resume-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid #4F8EF7;
+      color: #4F8EF7;
+      border-radius: 999px;
+    }
+
+    .primary-button:hover,
+    .resume-button:hover {
+      background: #79AFFF;
+      border-color: #79AFFF;
+      color: #0B1220;
+      transform: translateY(-2px);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 16px;
+      margin-bottom: 22px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: #49D17D;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .status-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #35D06F;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .status-dot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #35D06F;
+      animation: pulse 1.9s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.75;
+      }
+      70% {
+        transform: scale(2.8);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(2.8);
+        opacity: 0;
+      }
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      display: block;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: #4F8EF7;
+      transition: width 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      background: var(--card-hover);
+      border-color: rgba(79,142,247,0.8);
+      box-shadow: var(--shadow);
+    }
+
+    .project-card:hover::before {
+      width: 100%;
+    }
+
+    .project-card:hover .project-arrow {
+      transform: translateX(6px);
+      color: #79AFFF;
+    }
+
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(79,142,247,0.65);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .main-text {
+      color: var(--text);
+    }
+
+    .divider {
+      background: var(--soft-border);
+    }
+
+    .footer-border,
+    .section-border {
+      border-color: var(--border);
+    }
+
+    .mobile-menu {
+      scrollbar-width: none;
+    }
+
+    .mobile-menu::-webkit-scrollbar {
+      display: none;
+    }
+
+    [dir="rtl"] body {
+      text-align: right;
+      font-family: Calibri, Arial, sans-serif;
+    }
+
+    [dir="rtl"] body * {
+      font-family: Calibri, Arial, sans-serif !important;
+    }
+
+    [dir="rtl"] h1,
+    [dir="rtl"] h2,
+    [dir="rtl"] h3,
+    [dir="rtl"] h4 {
+      font-weight: 700;
+    }
+
+    [dir="rtl"] .project-card::before {
+      left: auto;
+      right: 0;
+    }
+
+    [dir="rtl"] .project-card:hover .project-arrow {
+      transform: translateX(-6px);
+    }
+
+
+    body {
+      position: relative;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 88% 8%, rgba(79, 142, 247, 0.18), transparent 28%),
+        radial-gradient(circle at 10% 72%, rgba(121, 175, 255, 0.10), transparent 24%),
+        var(--bg);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: -3;
+    }
+
+    body.light::before {
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .background-orb {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(70px);
+      pointer-events: none;
+      z-index: -2;
+      opacity: 0.45;
+      transition: transform 0.2s ease-out;
+    }
+
+    .orb-one {
+      width: 260px;
+      height: 260px;
+      top: 12%;
+      right: 6%;
+      background: rgba(79, 142, 247, 0.16);
+    }
+
+    .orb-two {
+      width: 220px;
+      height: 220px;
+      left: 4%;
+      bottom: 12%;
+      background: rgba(121, 175, 255, 0.11);
+    }
+
+    .wireframe-line {
+      position: fixed;
+      width: 180px;
+      height: 180px;
+      border: 1px solid rgba(79, 142, 247, 0.12);
+      border-radius: 28px;
+      transform: rotate(14deg);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .wireframe-one {
+      top: 24%;
+      left: -70px;
+    }
+
+    .wireframe-two {
+      right: -80px;
+      bottom: 18%;
+      transform: rotate(-12deg);
+    }
+
+    .hero-title {
+      text-shadow: 0 0 32px rgba(79, 142, 247, 0.18);
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 5px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .logo-first {
+      color: var(--text);
+    }
+
+    .logo-last {
+      color: #4F8EF7;
+    }
+
+    [dir="rtl"] .logo {
+      gap: 6px;
+    }
+
+    @media (max-width: 767px) {
+      .header-controls {
+        gap: 7px;
+      }
+
+      .language-button {
+        padding: 8px 11px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background-orb orb-one" aria-hidden="true"></div>
+  <div class="background-orb orb-two" aria-hidden="true"></div>
+  <div class="wireframe-line wireframe-one" aria-hidden="true"></div>
+  <div class="wireframe-line wireframe-two" aria-hidden="true"></div>
+
+  <header class="site-header fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b">
+    <nav class="max-w-6xl mx-auto px-5 md:px-6 py-4 flex items-center justify-between gap-4">
+
+      <a href="#home" class="logo" aria-label="Hajar Alharthi">
+        <span
+          class="logo-first"
+          data-en="Hajar"
+          data-ar="هاجر"
+        >Hajar</span>
+        <span
+          class="logo-last"
+          data-en="Alharthi"
+          data-ar="الحارثي"
+        >Alharthi</span>
+      </a>
+
+      <div class="flex items-center gap-3 md:gap-5">
+        <div class="mobile-menu hidden md:flex items-center gap-8 text-base whitespace-nowrap">
+          <a href="#about" class="nav-link" data-en="About" data-ar="نبذة">About</a>
+          <a href="#projects" class="nav-link" data-en="Projects" data-ar="المشاريع">Projects</a>
+          <a href="#contact" class="nav-link" data-en="Contact" data-ar="التواصل">Contact</a>
+        </div>
+
+        <div class="header-controls flex items-center">
+          <button
+            id="languageToggle"
+            type="button"
+            class="language-button"
+            aria-label="Switch language"
+          >
+            AR
+          </button>
+
+          <button
+            id="themeToggle"
+            type="button"
+            class="icon-button"
+            aria-label="Switch color mode"
+          >
+            ☀
+          </button>
+        </div>
+      </div>
+
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="home" class="min-h-screen flex items-center px-5 md:px-6 pt-28 pb-20">
+      <div class="max-w-6xl mx-auto w-full">
+
+        <div class="status-badge">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-en="Intern at Makkah Municipality" data-ar="متدربة في أمانة العاصمة المقدسة">
+            HCI Intern
+          </span>
+        </div>
+
+        <p
+          class="italic text-xl md:text-2xl text-blue mb-5"
+          data-en="Human-Computer Interaction Student"
+          data-ar="طالبة تفاعل الإنسان مع الحاسب"
+        >
+          Human-Computer Interaction Student
+        </p>
+
+        <h1
+          class="hero-title text-5xl sm:text-6xl md:text-7xl font-bold leading-[0.95] mb-7"
+          data-en="HAJAR ALHARTHI"
+          data-ar="هاجر الحارثي"
+        >
+          HAJAR ALHARTHI
+        </h1>
+
+        <p
+          class="muted text-lg md:text-xl max-w-2xl leading-relaxed mb-9"
+          data-en="An HCI student passionate about user-centered design, UX research, usability testing, and creating meaningful digital experiences."
+          data-ar="طالبة في تخصص تفاعل الإنسان مع الحاسب، مهتمة بالتصميم المتمحور حول المستخدم، وأبحاث تجربة المستخدم، واختبارات قابلية الاستخدام، وتصميم تجارب رقمية ذات معنى."
+        >
+          An HCI student passionate about user-centered design, UX research,
+          usability testing, and creating meaningful digital experiences.
+        </p>
+
+        <a
+          href="#projects"
+          class="primary-button px-7 py-3 text-base"
+        >
+          <span data-en="Explore My Projects" data-ar="استعرض مشاريعي">
+            Explore My Projects
+          </span>
+          <span aria-hidden="true">↓</span>
+        </a>
+
+      </div>
+    </section>
+
+    <section id="about" class="section-border py-24 px-5 md:px-6 border-t">
+      <div class="max-w-6xl mx-auto">
+
+        <div class="grid md:grid-cols-[0.8fr_1px_2fr] gap-8 md:gap-12 items-start">
+
+          <div>
+            <p
+              class="italic text-xl text-blue mb-2"
+              data-en="A little about me"
+              data-ar="نبذة بسيطة عني"
+            >
+              A little about me
+            </p>
+
+            <h2
+              class="section-title text-4xl md:text-5xl"
+              data-en="About Me"
+              data-ar="نبذة عني"
+            >
+              About Me
+            </h2>
+          </div>
+
+          <div class="divider hidden md:block w-px h-full"></div>
+
+          <div>
+            <p
+              class="main-text text-lg md:text-xl leading-relaxed mb-5"
+              data-en="I am a Human-Computer Interaction student at Umm Al-Qura University with a strong interest in user-centered design, usability, problem solving, and UX research."
+              data-ar="أنا طالبة في تخصص تفاعل الإنسان مع الحاسب بجامعة أم القرى، ومهتمة بالتصميم المتمحور حول المستخدم، وقابلية الاستخدام، وحل المشكلات، وأبحاث تجربة المستخدم."
+            >
+              I am a Human-Computer Interaction student at Umm Al-Qura University
+              with a strong interest in user-centered design, usability, problem
+              solving, and UX research.
+            </p>
+
+            <p
+              class="muted text-lg leading-relaxed"
+              data-en="My goal is to create simple and meaningful digital experiences by combining research, analysis, and thoughtful interface design."
+              data-ar="أهدف إلى تصميم تجارب رقمية بسيطة وذات معنى من خلال الجمع بين البحث والتحليل وتصميم الواجهات المدروس."
+            >
+              My goal is to create simple and meaningful digital experiences by
+              combining research, analysis, and thoughtful interface design.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="info-card rounded-3xl p-7 md:p-9 mt-14">
+
+          <h3
+            class="section-title text-2xl text-blue mb-7"
+            data-en="Core Skills"
+            data-ar="المهارات الأساسية"
+          >
+            Core Skills
+          </h3>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-lg main-text">
+            <div class="border-l border-blue/50 pl-4" data-en="UX Research" data-ar="أبحاث تجربة المستخدم">UX Research</div>
+            <div class="border-l border-blue/50 pl-4" data-en="Usability Testing" data-ar="اختبارات قابلية الاستخدام">Usability Testing</div>
+            <div class="border-l border-blue/50 pl-4" data-en="User-Centered Design" data-ar="التصميم المتمحور حول المستخدم">User-Centered Design</div>
+            <div class="border-l border-blue/50 pl-4" data-en="Prototyping" data-ar="النمذجة الأولية">Prototyping</div>
+            <div class="border-l border-blue/50 pl-4" data-en="User Journeys" data-ar="رحلات المستخدم">User Journeys</div>
+            <div class="border-l border-blue/50 pl-4" data-en="Wireframing" data-ar="المخططات الهيكلية">Wireframing</div>
+            <div class="border-l border-blue/50 pl-4" data-en="UI Design" data-ar="تصميم واجهات المستخدم">UI Design</div>
+            <div class="border-l border-blue/50 pl-4" data-en="Presentation Skills" data-ar="مهارات العرض والتقديم">Presentation Skills</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="projects" class="section-border py-24 px-5 md:px-6 border-t">
+      <div class="max-w-6xl mx-auto">
+
+        <p
+          class="italic text-xl text-blue mb-2"
+          data-en="Selected case studies"
+          data-ar="دراسات حالة مختارة"
+        >
+          Selected case studies
+        </p>
+
+        <h2
+          class="section-title text-4xl md:text-5xl mb-12"
+          data-en="Academic Projects"
+          data-ar="المشاريع الأكاديمية"
+        >
+          Academic Projects
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+
+          <a href="shaml.html" class="project-card rounded-3xl p-7 md:p-8">
+            <p
+              class="text-sm uppercase tracking-[0.14em] text-blue mb-4"
+              data-en="Human-Computer Interaction | Graduation Project"
+              data-ar="التفاعل بين الإنسان والحاسب | مشروع التخرج"
+            >
+              Human-Computer Interaction | Graduation Project
+            </p>
+
+            <h3 class="text-3xl md:text-4xl mb-4">Shaml+</h3>
+
+            <p
+              class="muted text-lg leading-relaxed mb-7"
+              data-en="A user-centered platform designed to improve external child visitation services for parents, children, and administrators."
+              data-ar="منصة متمحورة حول المستخدم تهدف إلى تحسين خدمات الزيارات الخارجية للأطفال للوالدين والأطفال والإداريين."
+            >
+              A user-centered platform designed to improve external child
+              visitation services for parents, children, and administrators.
+            </p>
+
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex flex-wrap gap-2">
+                <span class="text-sm border border-white/15 rounded-full px-3 py-1" data-en="UX Research" data-ar="أبحاث تجربة المستخدم">UX Research</span>
+                <span class="text-sm border border-white/15 rounded-full px-3 py-1" data-en="Usability Testing" data-ar="اختبارات قابلية الاستخدام">Usability Testing</span>
+              </div>
+              <span class="project-arrow text-blue text-xl" aria-hidden="true">→</span>
+            </div>
+          </a>
+
+          <a href="museum.html" class="project-card rounded-3xl p-7 md:p-8">
+            <p
+              class="text-sm uppercase tracking-[0.14em] text-blue mb-4"
+              data-en="Prototyping Methods Project"
+              data-ar="مشروع أساليب النمذجة الأولية"
+            >
+              Prototyping Methods Project
+            </p>
+
+            <h3 class="text-3xl md:text-4xl mb-4">Museum QR Guide</h3>
+
+            <p
+              class="muted text-lg leading-relaxed mb-7"
+              data-en="An interactive museum guide that helps visitors access exhibit information through QR codes and clear navigation."
+              data-ar="دليل متحف تفاعلي يساعد الزوار على الوصول إلى معلومات المعروضات عبر رموز QR وتنقل واضح."
+            >
+              An interactive museum guide that helps visitors access exhibit
+              information through QR codes and clear navigation.
+            </p>
+
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex flex-wrap gap-2">
+                <span class="text-sm border border-white/15 rounded-full px-3 py-1" data-en="Prototyping" data-ar="النمذجة الأولية">Prototyping</span>
+                <span class="text-sm border border-white/15 rounded-full px-3 py-1" data-en="Task Flows" data-ar="تدفقات المهام">Task Flows</span>
+              </div>
+              <span class="project-arrow text-blue text-xl" aria-hidden="true">→</span>
+            </div>
+          </a>
+
+          <a href="blossomia.html" class="project-card rounded-3xl p-7 md:p-8">
+            <p
+              class="text-sm uppercase tracking-[0.14em] text-blue mb-4"
+              data-en="User Experience Project"
+              data-ar="مشروع تجربة المستخدم"
+            >
+              User Experience Project
+            </p>
+
+            <h3 class="text-3xl md:text-4xl mb-4">Blossomia</h3>
+
+            <p
+              class="muted text-lg leading-relaxed mb-7"
+              data-en="A flower-shopping experience focused on personalization, customization, and understanding customer needs."
+              data-ar="تجربة لشراء الزهور تركز على التخصيص وفهم احتياجات العملاء."
+            >
+              A flower-shopping experience focused on personalization,
+              customization, and understanding customer needs.
+            </p>
+
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex flex-wrap gap-2">
+                <span class="text-sm border border-white/15 rounded-full px-3 py-1" data-en="Personas" data-ar="الشخصيات الافتراضية">Personas</span>
+                <span class="text-sm border border-white/15 rounded-full px-3 py-1" data-en="Journey Maps" data-ar="خرائط رحلة المستخدم">Journey Maps</span>
+              </div>
+              <span class="project-arrow text-blue text-xl" aria-hidden="true">→</span>
+            </div>
+          </a>
+
+          <a href="sportify.html" class="project-card rounded-3xl p-7 md:p-8">
+            <p
+              class="text-sm uppercase tracking-[0.14em] text-blue mb-4"
+              data-en="Visual Design Project"
+              data-ar="مشروع التصميم البصري"
+            >
+              Visual Design Project
+            </p>
+
+            <h3 class="text-3xl md:text-4xl mb-4">Sportify</h3>
+
+            <p
+              class="muted text-lg leading-relaxed mb-7"
+              data-en="A visual design project exploring hierarchy, typography, branding, and modern mobile fitness interface design."
+              data-ar="مشروع تصميم بصري يستكشف التسلسل الهرمي والطباعة والهوية وتصميم واجهات تطبيقات اللياقة."
+            >
+              A visual design project exploring hierarchy, typography,
+              branding, and modern mobile fitness interface design.
+            </p>
+
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex flex-wrap gap-2">
+                <span class="text-sm border border-white/15 rounded-full px-3 py-1" data-en="Visual Design" data-ar="التصميم البصري">Visual Design</span>
+                <span class="text-sm border border-white/15 rounded-full px-3 py-1" data-en="Typography" data-ar="الطباعة">Typography</span>
+              </div>
+              <span class="project-arrow text-blue text-xl" aria-hidden="true">→</span>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contact" class="section-border py-24 px-5 md:px-6 border-t">
+      <div class="max-w-6xl mx-auto">
+
+        <div class="grid md:grid-cols-[0.8fr_1px_2fr] gap-8 md:gap-12 items-start">
+
+          <div>
+            <p
+              class="italic text-xl text-blue mb-2"
+              data-en="Get in touch"
+              data-ar="للتواصل"
+            >
+              Get in touch
+            </p>
+
+            <h2
+              class="section-title text-4xl md:text-5xl"
+              data-en="Contact"
+              data-ar="التواصل"
+            >
+              Contact
+            </h2>
+          </div>
+
+          <div class="divider hidden md:block w-px h-full"></div>
+
+          <div>
+            <p
+              class="main-text text-lg md:text-xl leading-relaxed mb-8 max-w-2xl"
+              data-en="Feel free to reach out for collaboration, training opportunities, or HCI-related projects."
+              data-ar="يسعدني التواصل للتعاون أو فرص التدريب أو المشاريع المتعلقة بتفاعل الإنسان مع الحاسب."
+            >
+              Feel free to reach out for collaboration, training opportunities,
+              or HCI-related projects.
+            </p>
+
+            <div class="space-y-4 text-lg">
+
+              <p>
+                <span class="muted inline-block w-24" data-en="Email" data-ar="البريد">Email</span>
+                <a href="mailto:hajiralharthi1@gmail.com" class="contact-link text-blue">
+                  hajiralharthi1@gmail.com
+                </a>
+              </p>
+
+              <p>
+                <span class="muted inline-block w-24" data-en="LinkedIn" data-ar="لينكدإن">LinkedIn</span>
+                <a
+                  href="https://linkedin.com/in/hajar-alharthi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="contact-link text-blue"
+                >
+                  linkedin.com/in/hajar-alharthi
+                </a>
+              </p>
+
+              <p>
+                <span class="muted inline-block w-24" data-en="Phone" data-ar="الجوال">Phone</span>
+                <a href="tel:+966565047783" class="contact-link text-blue">
+                  +966 56 504 7783
+                </a>
+              </p>
+
+              <p>
+                <span class="muted inline-block w-24" data-en="Location" data-ar="الموقع">Location</span>
+                <span class="main-text" data-en="Makkah, Saudi Arabia" data-ar="مكة المكرمة، المملكة العربية السعودية">
+                  Makkah, Saudi Arabia
+                </span>
+              </p>
+
+              <div class="pt-4">
+                <a
+                  href="Resume.pdf"
+                  download
+                  class="resume-button px-7 py-3 text-lg"
+                >
+                  <span aria-hidden="true">↓</span>
+                  <span data-en="Download Resume" data-ar="تحميل السيرة الذاتية">
+                    Download Resume
+                  </span>
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer-border border-t py-7 px-5 text-center muted text-base">
+    © 2026 Hajar Alharthi. All rights reserved.
+  </footer>
+
+  <script>
+    const body = document.body;
+    const themeToggle = document.getElementById("themeToggle");
+    const languageToggle = document.getElementById("languageToggle");
+
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    const savedLanguage = localStorage.getItem("portfolio-language") || "en";
+
+    if (savedTheme === "light") {
+      body.classList.add("light");
+      themeToggle.textContent = "☾";
+    }
+
+    function setLanguage(language) {
+      const isArabic = language === "ar";
+      document.documentElement.lang = isArabic ? "ar" : "en";
+      document.documentElement.dir = isArabic ? "rtl" : "ltr";
+      languageToggle.textContent = isArabic ? "EN" : "AR";
+
+      document.querySelectorAll("[data-en][data-ar]").forEach((element) => {
+        element.textContent = isArabic
+          ? element.getAttribute("data-ar")
+          : element.getAttribute("data-en");
+      });
+
+      localStorage.setItem("portfolio-language", language);
+    }
+
+    setLanguage(savedLanguage);
+
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("light");
+      const isLight = body.classList.contains("light");
+      themeToggle.textContent = isLight ? "☾" : "☀";
+      localStorage.setItem("portfolio-theme", isLight ? "light" : "dark");
+    });
+
+    languageToggle.addEventListener("click", () => {
+      const currentLanguage = document.documentElement.lang;
+      setLanguage(currentLanguage === "ar" ? "en" : "ar");
+    });
+
+    const orbOne = document.querySelector(".orb-one");
+    const orbTwo = document.querySelector(".orb-two");
+
+    window.addEventListener("mousemove", (event) => {
+      const x = (event.clientX / window.innerWidth - 0.5) * 18;
+      const y = (event.clientY / window.innerHeight - 0.5) * 18;
+
+      orbOne.style.transform = `translate(${x}px, ${y}px)`;
+      orbTwo.style.transform = `translate(${-x}px, ${-y}px)`;
+    });
+  </script>
+
+</body>
+</html>
